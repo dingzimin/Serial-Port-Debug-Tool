@@ -1,6 +1,7 @@
 # 串口调试工具 Serial Port Debug Tool
 用C#和WPF写的串口调试工具，实现了串口通信。
-![Alt text](/images/Screenshot0.png?raw=true "Screen shot")
+
+![Screenshot](https://github.com/dingzimin/images/Screenshot0.png?raw=true)
 
 ## 特性
 * 列出所有的串口
