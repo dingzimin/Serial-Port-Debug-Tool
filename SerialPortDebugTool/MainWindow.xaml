@@ -1,0 +1,70 @@
+﻿<Window x:Class="SerialPortDebugTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Serial Port Debug Tool" Height="400" Width="600" Topmost="{Binding IsChecked, ElementName=TopmostSwitch}" UseLayoutRounding="False" Visibility="Visible" Opacity="{Binding Value, ElementName=OpacitySlider}" MouseDown="Window_MouseDown">
+    <Window.Resources>
+        <AlternationConverter x:Key="AlternationConverter"/>
+    </Window.Resources>
+    <Grid x:Name="MainGrid" Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="160"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="OptionGrid" Margin="0" Grid.Column="1">
+            <Label Content="串口" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="25"
+                    Width="34"/>
+            <Label Content="波特率" HorizontalAlignment="Left" Margin="5,35,0,0" VerticalAlignment="Top" Height="25"
+                    Width="46"/>
+            <Label Content="校验位" HorizontalAlignment="Left" Margin="5,65,0,0" VerticalAlignment="Top" Height="25"
+                    Width="46"/>
+            <Label Content="数据位" HorizontalAlignment="Left" Margin="5,95,0,0" VerticalAlignment="Top" Height="25"
+                    Width="46"/>
+            <Label Content="停止位" HorizontalAlignment="Left" Margin="5,125,0,0" VerticalAlignment="Top" Height="25"
+                    Width="46"/>
+            <ComboBox x:Name="PortNameComboBox" Margin="56,7,10,0" VerticalAlignment="Top" Height="21"/>
+            <ComboBox x:Name="BaudRateComboBox" Margin="56,37,10,0" VerticalAlignment="Top" Height="21" IsEditable="True"/>
+            <ComboBox x:Name="ParityComboBox" Margin="56,67,10,0" VerticalAlignment="Top" Height="21"/>
+            <ComboBox x:Name="DataBitsComboBox" Margin="56,97,10,0" VerticalAlignment="Top" Height="21"/>
+            <ComboBox x:Name="StopBitsComboBox" Margin="56,127,10,0" VerticalAlignment="Top" Height="21"/>
+            <Button  x:Name="SerialPortSwitch" Content="打开串口" Margin="10,155,10,0"
+                    VerticalAlignment="Top" Height="25"/>
+            <CheckBox x:Name="TopmostSwitch" Content="窗口置顶" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="140" Height="25" VerticalContentAlignment="Center"/>
+            <Slider x:Name="OpacitySlider" HorizontalAlignment="Left" Margin="5,215,0,0" VerticalAlignment="Top" Width="140" Value="1" Maximum="1" Minimum="0.25" LargeChange="0.2"/>
+            <Button x:Name="SendDataButton" Content="发送" Margin="10,0,10,10" VerticalAlignment="Bottom"
+                    Height="25"/>
+        </Grid>
+        <Grid x:Name="RxTxGrid" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="ReceiveText" TextWrapping="Wrap" Margin="5,25,5,5" AcceptsReturn="true"
+                    VerticalScrollBarVisibility="Auto" AcceptsTab="True"/>
+            <TextBox x:Name="TransmitText" Grid.Row="1" TextWrapping="Wrap" Margin="5,25,5,5" AcceptsReturn="true"
+                    VerticalScrollBarVisibility="Auto" AcceptsTab="True"/>
+            <Label Content="" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="23"/>
+            <TextBlock HorizontalAlignment="Left" Margin="5,5,0,0" TextWrapping="Wrap" Text="接收区" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="1" TextWrapping="Wrap" Text="发送区"
+                    VerticalAlignment="Top"/>
+            <TextBlock x:Name="ClearButton" HorizontalAlignment="Right" Margin="0,5,5,0"
+                    TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF7F7F7F"><Run Text="清空"/></TextBlock>
+            <Grid x:Name="RxDataTypeGrid" Margin="60,6,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="14">
+                <RadioButton x:Name="RxDataText" Content="Text" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True"/>
+                <RadioButton x:Name="RxDataHex" Content="Hex" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center"/>
+                <RadioButton x:Name="RxDataEscape" Content="Escape" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="TxDataTypeGrid" Margin="60,6,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="14" Grid.Row="1">
+                <RadioButton x:Name="TxDataText" Content="Text" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True"/>
+                <RadioButton x:Name="TxDataHex" Content="Hex" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center"/>
+                <RadioButton x:Name="TxDataEscape" Content="Escape" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="ToastGrid" Grid.ColumnSpan="2" Width="{Binding Width, ElementName=ToastText}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="{Binding Height, ElementName=ToastText}" Opacity="0">
+            <Rectangle Fill="Black" Margin="0" RadiusX="14" RadiusY="14"/>
+            <Label x:Name="ToastText" HorizontalAlignment="Center" Margin="5,0" VerticalAlignment="Center" Foreground="White" MinHeight="28" MinWidth="18" Content="" FontSize="14"/>
+        </Grid>
+    </Grid>
+</Window>
