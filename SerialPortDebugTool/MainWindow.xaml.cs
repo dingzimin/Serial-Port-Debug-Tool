@@ -66,10 +66,10 @@ namespace SerialPortDebugTool
             TxDataEscape.Checked += (s, e) => txDataType = DataType.Escape;
             ClearButton.MouseDown += (s, e) => e.Handled = true;
             ClearButton.MouseUp += (s, e) => ReceiveText.Clear();
-            MainLRSplitter.MouseEnter += (s, e) => MainLRSplitter.Opacity = 0.25;
-            MainLRSplitter.MouseLeave += (s, e) => MainLRSplitter.Opacity = 0.01;
-            TxRxTDSplitter.MouseEnter += (s, e) => TxRxTDSplitter.Opacity = 0.25;
-            TxRxTDSplitter.MouseLeave += (s, e) => TxRxTDSplitter.Opacity = 0.01;
+            MainLRSplitter.MouseEnter += (s, e) => MainLRLine.Opacity = 1;
+            MainLRSplitter.MouseLeave += (s, e) => MainLRLine.Opacity = 0;
+            TxRxTDSplitter.MouseEnter += (s, e) => TxRxTDLine.Opacity = 1;
+            TxRxTDSplitter.MouseLeave += (s, e) => TxRxTDLine.Opacity = 0;
             var watcher = new ManagementEventWatcher();
             watcher.Query =
                 new WqlEventQuery("SELECT * FROM Win32_DeviceChangeEvent WHERE EventType = 2 or EventType = 3");

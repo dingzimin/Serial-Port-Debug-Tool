@@ -13,7 +13,8 @@
             <ColumnDefinition MinWidth="100"/>
             <ColumnDefinition Width="160"/>
         </Grid.ColumnDefinitions>
-        <GridSplitter x:Name="MainLRSplitter" HorizontalAlignment="Left" Width="4" Cursor="SizeWE" Margin="-2,0,0,0" Opacity="0.01" Grid.Column="1" ResizeDirection="Columns" Background="#FF0078D7"/>
+        <Rectangle x:Name="MainLRLine" Fill="#FF0078D7" Margin="-0.5,0,0,0" Width="1" HorizontalAlignment="Left" Grid.Column="1" Opacity="0"/>
+        <GridSplitter x:Name="MainLRSplitter" HorizontalAlignment="Left" Width="6" Cursor="SizeWE" Margin="-3,0,0,0" Opacity="0" Grid.Column="1" ResizeDirection="Columns" Background="White"/>
         <Grid x:Name="OptionGrid" Margin="0" Grid.Column="1">
             <Label Content="串口" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="25"
                     Width="34"/>
@@ -61,10 +62,11 @@
                 <RadioButton x:Name="TxDataHex" Content="Hex" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center"/>
                 <RadioButton x:Name="TxDataEscape" Content="Escape" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
             </Grid>
-            <GridSplitter x:Name="TxRxTDSplitter" HorizontalAlignment="Stretch" Height="4" Margin="0,-2,2,0" Grid.Row="1" VerticalAlignment="Top" Cursor="SizeNS" Background="#FF0078D2" Opacity="0.01" ResizeDirection="Rows"/>
+            <Rectangle x:Name="TxRxTDLine" Fill="#FF0078D7" Height="1" Margin="0,-0.5,0,0" VerticalAlignment="Top" Opacity="0" Grid.Row="1"/>
+            <GridSplitter x:Name="TxRxTDSplitter" HorizontalAlignment="Stretch" Height="6" Margin="0,-3,3,0" Grid.Row="1" VerticalAlignment="Top" Cursor="SizeNS" Background="White" ResizeDirection="Rows" Opacity="0"/>
         </Grid>
         <Grid x:Name="ToastGrid" Grid.ColumnSpan="2" Width="{Binding Width, ElementName=ToastText}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="{Binding Height, ElementName=ToastText}" Opacity="0" IsHitTestVisible="False">
-            <Rectangle Fill="Black" Margin="0" RadiusX="14" RadiusY="14"/>
+            <Rectangle x:Name="ToastBackground" Fill="Black" Margin="0" RadiusX="14" RadiusY="14"/>
             <Label x:Name="ToastText" HorizontalAlignment="Center" Margin="5,0" VerticalAlignment="Center" Foreground="White" MinHeight="28" MinWidth="18" Content="" FontSize="14"/>
         </Grid>
     </Grid>
