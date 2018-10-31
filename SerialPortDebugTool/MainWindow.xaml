@@ -13,6 +13,7 @@
             <ColumnDefinition MinWidth="100"/>
             <ColumnDefinition Width="160"/>
         </Grid.ColumnDefinitions>
+        <GridSplitter x:Name="MainLRSplitter" HorizontalAlignment="Left" Width="4" Cursor="SizeWE" Margin="-2,0,0,0" Opacity="0.01" Grid.Column="1" ResizeDirection="Columns" Background="#FF0078D7"/>
         <Grid x:Name="OptionGrid" Margin="0" Grid.Column="1">
             <Label Content="串口" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="25"
                     Width="34"/>
@@ -45,7 +46,6 @@
                     VerticalScrollBarVisibility="Auto" AcceptsTab="True"/>
             <TextBox x:Name="TransmitText" Grid.Row="1" TextWrapping="Wrap" Margin="5,25,5,5" AcceptsReturn="true"
                     VerticalScrollBarVisibility="Auto" AcceptsTab="True"/>
-            <Label Content="" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="23"/>
             <TextBlock HorizontalAlignment="Left" Margin="5,5,0,0" TextWrapping="Wrap" Text="接收区" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="1" TextWrapping="Wrap" Text="发送区"
                     VerticalAlignment="Top"/>
@@ -61,12 +61,11 @@
                 <RadioButton x:Name="TxDataHex" Content="Hex" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center"/>
                 <RadioButton x:Name="TxDataEscape" Content="Escape" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
             </Grid>
-            <GridSplitter HorizontalAlignment="Stretch" Height="4" Margin="0,-2,2,0" Grid.Row="1" VerticalAlignment="Top" Cursor="SizeNS"/>
+            <GridSplitter x:Name="TxRxTDSplitter" HorizontalAlignment="Stretch" Height="4" Margin="0,-2,2,0" Grid.Row="1" VerticalAlignment="Top" Cursor="SizeNS" Background="#FF0078D2" Opacity="0.01" ResizeDirection="Rows"/>
         </Grid>
-        <Grid x:Name="ToastGrid" Grid.ColumnSpan="2" Width="{Binding Width, ElementName=ToastText}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="{Binding Height, ElementName=ToastText}" Opacity="0">
+        <Grid x:Name="ToastGrid" Grid.ColumnSpan="2" Width="{Binding Width, ElementName=ToastText}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="{Binding Height, ElementName=ToastText}" Opacity="0" IsHitTestVisible="False">
             <Rectangle Fill="Black" Margin="0" RadiusX="14" RadiusY="14"/>
             <Label x:Name="ToastText" HorizontalAlignment="Center" Margin="5,0" VerticalAlignment="Center" Foreground="White" MinHeight="28" MinWidth="18" Content="" FontSize="14"/>
         </Grid>
-        <GridSplitter HorizontalAlignment="Left" Width="4" Grid.Column="1" Cursor="SizeWE" Margin="-2,0,0,0"/>
     </Grid>
 </Window>
