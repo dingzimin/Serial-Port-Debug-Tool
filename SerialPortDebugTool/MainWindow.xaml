@@ -4,13 +4,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Serial Port Debug Tool" Height="400" Width="600" Topmost="{Binding IsChecked, ElementName=TopmostSwitch}" UseLayoutRounding="False" Visibility="Visible" Opacity="{Binding Value, ElementName=OpacitySlider}" MouseDown="Window_MouseDown">
+        Title="Serial Port Debug Tool" Height="400" Width="600" Topmost="{Binding IsChecked, ElementName=TopmostSwitch}" UseLayoutRounding="False" Visibility="Visible" Opacity="{Binding Value, ElementName=OpacitySlider}" MouseDown="Window_MouseDown" MinWidth="300" MinHeight="200">
     <Window.Resources>
         <AlternationConverter x:Key="AlternationConverter"/>
     </Window.Resources>
     <Grid x:Name="MainGrid" Margin="0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition MinWidth="100"/>
             <ColumnDefinition Width="160"/>
         </Grid.ColumnDefinitions>
         <Grid x:Name="OptionGrid" Margin="0" Grid.Column="1">
@@ -32,14 +32,14 @@
             <Button  x:Name="SerialPortSwitch" Content="打开串口" Margin="10,155,10,0"
                     VerticalAlignment="Top" Height="25"/>
             <CheckBox x:Name="TopmostSwitch" Content="窗口置顶" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="140" Height="25" VerticalContentAlignment="Center"/>
-            <Slider x:Name="OpacitySlider" HorizontalAlignment="Left" Margin="5,215,0,0" VerticalAlignment="Top" Width="140" Value="1" Maximum="1" Minimum="0.25" LargeChange="0.2"/>
+            <Slider x:Name="OpacitySlider" Margin="10,215,10,0" VerticalAlignment="Top" Value="1" Maximum="1" Minimum="0.25" LargeChange="0.2"/>
             <Button x:Name="SendDataButton" Content="发送" Margin="10,0,10,10" VerticalAlignment="Bottom"
                     Height="25"/>
         </Grid>
         <Grid x:Name="RxTxGrid" Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*" MinHeight="50"/>
+                <RowDefinition Height="2*" MinHeight="50"/>
             </Grid.RowDefinitions>
             <TextBox x:Name="ReceiveText" TextWrapping="Wrap" Margin="5,25,5,5" AcceptsReturn="true"
                     VerticalScrollBarVisibility="Auto" AcceptsTab="True"/>
@@ -61,10 +61,12 @@
                 <RadioButton x:Name="TxDataHex" Content="Hex" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center"/>
                 <RadioButton x:Name="TxDataEscape" Content="Escape" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
             </Grid>
+            <GridSplitter HorizontalAlignment="Stretch" Height="4" Margin="0,-2,2,0" Grid.Row="1" VerticalAlignment="Top" Cursor="SizeNS"/>
         </Grid>
         <Grid x:Name="ToastGrid" Grid.ColumnSpan="2" Width="{Binding Width, ElementName=ToastText}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="{Binding Height, ElementName=ToastText}" Opacity="0">
             <Rectangle Fill="Black" Margin="0" RadiusX="14" RadiusY="14"/>
             <Label x:Name="ToastText" HorizontalAlignment="Center" Margin="5,0" VerticalAlignment="Center" Foreground="White" MinHeight="28" MinWidth="18" Content="" FontSize="14"/>
         </Grid>
+        <GridSplitter HorizontalAlignment="Left" Width="4" Grid.Column="1" Cursor="SizeWE" Margin="-2,0,0,0"/>
     </Grid>
 </Window>
