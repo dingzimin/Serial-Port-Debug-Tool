@@ -1,5 +1,6 @@
 # 串口调试工具 Serial Port Debug Tool
-基于C#和WPF的串口调试工具，实现了串口通信。
+基于 C# 和 WPF 的串口调试工具，可用于计算机和微控制器的串口通信。
+需要 .NET Framework 4.x 运行环境
 
 ![Screenshot](https://raw.githubusercontent.com/dingzimin/Serial-Port-Debug-Tool/master/images/Screenshot0.png)
 
