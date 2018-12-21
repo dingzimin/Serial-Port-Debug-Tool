@@ -332,6 +332,7 @@ namespace SerialPortDebugTool
 
         private void LoadComs()
         {
+            
             var selectedItem = PortNameComboBox.SelectedItem as string;
             var portNameDataList = new List<PortNameData>();
             var portNames = SerialPort.GetPortNames();
@@ -345,15 +346,18 @@ namespace SerialPortDebugTool
                 if (portNames[index] == selectedItem)
                     num = index;
             }
-
-            if (port.IsOpen && num == -1 && !string.IsNullOrEmpty(selectedItem))
+            if (num == -1)
             {
-                portNameDataList.Add(new PortNameData
-                {
-                    Name = $"{selectedItem} (已断开)"
-                });
-                num = portNameDataList.Count - 1;
+                SerialPortSwitch.Content = "打开串口";
             }
+//            if (num == -1 && !string.IsNullOrEmpty(selectedItem))
+//            {
+//                portNameDataList.Add(new PortNameData
+//                {
+//                    Name = $"{selectedItem} (已断开)"
+//                });
+//                num = portNameDataList.Count - 1;
+//            }
 
             PortNameComboBox.ItemsSource = portNameDataList;
             PortNameComboBox.DisplayMemberPath = "Name";
