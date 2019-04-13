@@ -26,15 +26,18 @@
                     Width="46"/>
             <Label Content="停止位" HorizontalAlignment="Left" Margin="5,125,0,0" VerticalAlignment="Top" Height="25"
                     Width="46"/>
+            <Label Content="编码" HorizontalAlignment="Left" Margin="5,155,0,0" VerticalAlignment="Top" Height="25"
+                   Width="46"/>
             <ComboBox x:Name="PortNameComboBox" Margin="56,7,10,0" VerticalAlignment="Top" Height="21"/>
             <ComboBox x:Name="BaudRateComboBox" Margin="56,37,10,0" VerticalAlignment="Top" Height="21" IsEditable="True"/>
             <ComboBox x:Name="ParityComboBox" Margin="56,67,10,0" VerticalAlignment="Top" Height="21"/>
             <ComboBox x:Name="DataBitsComboBox" Margin="56,97,10,0" VerticalAlignment="Top" Height="21"/>
             <ComboBox x:Name="StopBitsComboBox" Margin="56,127,10,0" VerticalAlignment="Top" Height="21"/>
-            <Button  x:Name="SerialPortSwitch" Content="打开串口" Margin="10,155,10,0"
+            <ComboBox x:Name="EncodingComboBox" Margin="56,157,10,0" VerticalAlignment="Top" Height="21"/>
+            <Button  x:Name="SerialPortSwitch" Content="打开串口" Margin="10,185,10,0"
                     VerticalAlignment="Top" Height="25"/>
-            <CheckBox x:Name="TopmostSwitch" Content="窗口置顶" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="140" Height="25" VerticalContentAlignment="Center"/>
-            <Slider x:Name="OpacitySlider" Margin="10,215,10,0" VerticalAlignment="Top" Value="1" Maximum="1" Minimum="0.25" LargeChange="0.2"/>
+            <CheckBox x:Name="TopmostSwitch" Content="窗口置顶" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="140" Height="25" VerticalContentAlignment="Center"/>
+            <Slider x:Name="OpacitySlider" Margin="10,245,10,0" VerticalAlignment="Top" Value="1" Maximum="1" Minimum="0.25" LargeChange="0.2"/>
             <Button x:Name="SendDataButton" Content="发送" Margin="10,0,10,10" VerticalAlignment="Bottom"
                     Height="25"/>
         </Grid>

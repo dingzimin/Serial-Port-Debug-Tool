@@ -88,6 +88,19 @@ namespace SerialPortDebugTool
                     ToastGrid.BeginAnimation(OpacityProperty, a);
                 });
             };
+            EncodingComboBox.SelectionChanged += (sender, args) =>
+            {
+                try
+                {
+                     var encoding = (Encoding) EncodingComboBox.SelectedValue;
+                     port.Encoding = encoding;
+                     Toast("编码已更改为 " + encoding.EncodingName);
+                }
+                catch (Exception e)
+                {
+                    Toast(e.Message);
+                }
+            };
         }
 
         private void SerialDataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -237,6 +250,7 @@ namespace SerialPortDebugTool
                     port.Parity = (Parity) ParityComboBox.SelectedValue;
                     port.DataBits = (int) DataBitsComboBox.SelectedValue;
                     port.StopBits = (StopBits) StopBitsComboBox.SelectedValue;
+                    port.Encoding = (Encoding) EncodingComboBox.SelectedValue;
                     port.Open();
                     SerialPortSwitch.Content = "关闭串口";
                 }
@@ -328,6 +342,21 @@ namespace SerialPortDebugTool
             StopBitsComboBox.DisplayMemberPath = "Name";
             StopBitsComboBox.SelectedValuePath = "Value";
             StopBitsComboBox.SelectedIndex = 0;
+            EncodingComboBox.ItemsSource = new List<Encoding>
+            {
+                Encoding.GetEncoding(20127),
+                Encoding.GetEncoding(65001),
+                Encoding.GetEncoding(936),
+                Encoding.GetEncoding(20936),
+                Encoding.GetEncoding(52936),
+                Encoding.GetEncoding(54936),
+                Encoding.GetEncoding(1200),
+                Encoding.GetEncoding(1201),
+                Encoding.GetEncoding(12000),
+                Encoding.GetEncoding(12001)
+            };
+            EncodingComboBox.DisplayMemberPath = "EncodingName";
+            EncodingComboBox.SelectedIndex = 1;
         }
 
         private void LoadComs()
